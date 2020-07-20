@@ -1,0 +1,23 @@
+.game_board {
+    width: 9000px;
+    height: 900px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.tile {
+    display: flex;
+    padding: 0;
+    width: 180px;
+    height: 180px;
+    border: 1px black solid;
+}
+
+.water {
+    background-color: blue;
+
+}
