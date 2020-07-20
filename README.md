@@ -13,7 +13,7 @@ Jaws (a shark played in this instance played by the computer), and Quint (a surl
 
 (Your wireframes go here. Preferably two or more)
 <img src='./1-Jaws-Main-Screen.png'></img>
-
+<a href='https://wireframe.cc/pro/pp/06871bde6360309'>Link to Full-Sized</a>
 
 ## Initial thoughts on game structure
 I love how this project loops in so many of the things we covered (with some of the fundamentals here potentially being adapted from tic tac toe). Completing it to MVP would make for a fun and playable game, but the exciting thing here is how expandable it is. I'll need to think when factoring code about what features might want to expand later, because I think there's a lot of flexibility in where this could go.
