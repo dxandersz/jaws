@@ -59,4 +59,12 @@ Phase 3 (Brody): Brody moves exclusively on land (but not water), can shut down 
 
 Phase 4 (map choice): include option to change the configuration or scale of the map, but this could include a WHOLE lot of refactoring.
 
+##Updated MVP Standards
+* Board functions, with distinctions between water/beach and land spaces
+* Player can fire a barrel at the same or adjacent space and count on it to give win conditions if the shark is in the space.
+* Shark swims around the board at a set pace and eats a swimmer when passing over one of the beaches.
+* Buttons in place for performing actions.
+* Ability to navigate across board.
+* Game conveys shark actions to the player before their turn.
+
 ## Links and Resources
