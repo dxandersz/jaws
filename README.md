@@ -5,7 +5,7 @@ David Anderson. July 20, 2020.
 
 ## What is Jaws?
 
-It's a popular 1974 film by Stephen Spielberg you dummy! and one that's largely credited with creating the blueprint for the modern Hollywood blockbuster! It's also a board game based off that property, and that's what we're focusing on here. It's a sort of bizarre asynchronous take on Battleship that really captures the tone of the game. This adaptation will maintain that tone and sense of tension while stripping down the core, for the needs of time and practical consideration of the original multiplayer format for the game.
+It's a popular 1974 film by Stephen Spielberg you dummy! and one that's largely credited with creating the blueprint for the modern Hollywood blockbuster! It's also a board game based off that property, and that's what we're focusing on here. It's a sort of bizarre asynchronous take on Battleship that really captures the tone of the movie. This adaptation will maintain that ambiance and sense of tension while stripping down the core, for the needs of time and practical consideration of the original multiplayer format for the game.
 
 Jaws (a shark played in this instance played by the computer), and Quint (a surly old sharkhunter played by the player) take turns. Jaws wants to eat everything, and he'll move randomly (or semi-randomly) across the board each turn. The shark is trying to eat as many people as possible. The player is trying to tag the shark with two trackerss they can use to bring him down, but the primary means they have of tracking the shark is the location of their last kills. The player's objective is to hit Jaws with a set amount of trackers - but their amout of actions are limited and penned in by having limited information for tracking Jaws.    
 
