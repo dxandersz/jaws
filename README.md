@@ -12,7 +12,7 @@ Jaws (a shark played in this instance played by the computer), and Quint (a surl
 ## Wireframe
 
 (Your wireframes go here. Preferably two or more)
-<img src='./https://wireframe.cc/pro/pp/06871bde6360309'></img>
+<img src='./1-Jaws-Main-Screen.png'></img>
 
 
 ## Initial thoughts on game structure
