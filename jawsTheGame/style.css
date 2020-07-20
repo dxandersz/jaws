@@ -30,6 +30,12 @@
     background-color: blue;
 }
 
+.sharktile {
+    background-image: url('./img/jawstile.png');
+    background-size: cover;
+    align-content: center;    
+}
+
 #welcome_image {
     margin: 0 auto;
     display: flex;
