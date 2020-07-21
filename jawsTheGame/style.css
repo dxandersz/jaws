@@ -1,3 +1,9 @@
+/*Color scheme link: https://www.color-hex.com/color-palette/40784*/
+
+body {
+    background-color: #194a7b;
+}
+
 .game_board {
     width: 780px;
     height: 780px;
@@ -27,7 +33,7 @@
 }
 
 .water {
-    background-color: blue;
+    background-color: #bde5ee;
 }
 
 .dock {

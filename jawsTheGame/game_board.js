@@ -7,7 +7,6 @@ const south_boundary = [5, 7, 10, 12, 15, 17, 20, 25]
 const west_boundary =  [1, 2, 3, 4, 5, 17, 18, 19]
 //An array that can loop through the different boundary arrays to determine possible directions for the shark or player to move.
 const boundaries = [north_boundary, east_boundary, south_boundary, west_boundary]
-
 console.log(boundaries)
 console.log(north_boundary)
 console.log(east_boundary)
