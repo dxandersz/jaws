@@ -1,10 +1,15 @@
 /*Color scheme link: https://www.color-hex.com/color-palette/40784*/
 
-.container {
+/*.container {
     background-color: #194a7b;
     display: flex;
     flex-direction: row;
+}*/
+
+body {
+    background-color: #194a7b;
 }
+
 p {
     color: yellow;
 }
@@ -13,13 +18,13 @@ p {
     width: 780px;
     height: 780px;
     margin: 0 auto;
-    display: block;
+    display: flex;
 }
 
 .nav {
     width: 200px;
     height: 780px;
-    display: block;
+    display: flex;
     flex-direction: column;
     background-color: green;
 }
@@ -68,16 +73,16 @@ p {
 }
 
 .shore {
-    background-color: green;
+    background-color: #fc620a;
 }
 
 .beach {    
-    background-color: yellow;
+    background-color: #fa9335;
 }
 
 .dock {
 }
 
 .land {
-    background-color: brown;
+    background-color: #666060;
 }
