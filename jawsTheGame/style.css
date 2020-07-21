@@ -63,13 +63,16 @@ body {
 }
 
 .shore {
+    background-color: green;
 }
 
 .beach {    
+    background-color: yellow;
 }
 
 .dock {
 }
 
 .land {
+    background-color: brown;
 }
