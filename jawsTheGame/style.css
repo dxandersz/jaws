@@ -8,22 +8,30 @@
 
 body {
     background-color: #194a7b;
+    margin: auto 0;
 }
 
 p {
     color: yellow;
 }
 
+
+.container {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+}
+
 .game_board {
-    width: 780px;
-    height: 780px;
-    margin: 0 auto;
-    display: flex;
+    width: 750;
+    height: 750px;
+    display: inline-flex;
+    flex-direction: row; 
 }
 
 .nav {
-    width: 200px;
-    height: 780px;
+    width: 20%;
+    height: auto;
     display: flex;
     flex-direction: column;
     background-color: green;
@@ -37,8 +45,8 @@ p {
 .tile {
     display: flex;
     padding: 0;
-    width: 156px;
-    height: 156px;
+    width: 150px;
+    height: 150px;
     border: 1px black solid;
 }
 
