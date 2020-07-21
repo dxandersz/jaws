@@ -1,22 +1,27 @@
 /*Color scheme link: https://www.color-hex.com/color-palette/40784*/
 
-body {
+.container {
     background-color: #194a7b;
+    display: flex;
+    flex-direction: row;
+}
+p {
+    color: yellow;
 }
 
 .game_board {
     width: 780px;
     height: 780px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: horizontal;
+    display: block;
 }
 
-.menu {
-    width: 300px;
-    height: 900px;
-    display: flex;
-    flex-direction: horizontal;
+.nav {
+    width: 200px;
+    height: 780px;
+    display: block;
+    flex-direction: column;
+    background-color: green;
 }
 
 .row {
