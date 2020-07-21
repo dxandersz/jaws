@@ -1,0 +1,1 @@
+* Break up each tile into 2x4 grids. to hold icons for: buildings, swimmers, barrels fired, barrels available, jaws

@@ -30,10 +30,25 @@
     background-color: blue;
 }
 
-.sharktile {
+.dock {
+    background-image: url('./img/dock.png');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: top left;
+}
+
+#sharktile {
     background-image: url('./img/jawstile.png');
-    background-size: cover;
-    align-content: center;    
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+
+.barreltile {
+    background-image: url('./img/barrel.png');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: bottom left;
 }
 
 #welcome_image {
