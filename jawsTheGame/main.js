@@ -91,13 +91,14 @@ class Shark {
         this.dmg = dmg
     }
     eat() {
-        for (panel of beach_tiles) {
+        for (const panel of beach_tiles) {
             if (shark_position === panel) {
-                //dead_swimmers += Math.ceil(Math.random() * this.dmg)
-                //console.log(`There are now ${dead_swimmers} swimmers eaten. The shark was last seen at ${shark_position}.`)
+                dead_swimmers += Math.ceil(Math.random() * this.dmg)
+                console.log(`There are now ${dead_swimmers} swimmers eaten. The shark was last seen at ${shark_position}.`)
             }
             else (console.log("No swimmers dead. No shark sightings."))    
         }
+        console.log(dead_swimmers);
 
     }
     move() {
@@ -105,7 +106,7 @@ class Shark {
         for (let i = 1; i <= this.move_speed; i++) {
             console.log("Shark's position, turn beginning: " + shark_position);
             spielberg.canMove(shark_position);
-            let move_index = Math.ceil(Math.random() * directions.length);
+            let move_index = Math.floor(Math.random() * directions.length);
             shark_position += directions[move_index];
             console.log("Shark Position, turn end: " + shark_position);
             this.eat();
@@ -119,6 +120,6 @@ class Shark {
 }
 
 //Storing a shark for the game "A.I."
-jaws = new Shark(1, 3, 2);
+jaws = new Shark(1, 300, 2);
 spielberg.sharkStart();
 jaws.move();
