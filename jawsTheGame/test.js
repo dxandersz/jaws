@@ -84,3 +84,4 @@ console.log(shark_position);
 spielberg.sharkStart();
 spielberg.canMove(shark_position);
 console.log(directions);
+return directions;

@@ -1,92 +1,124 @@
-/*
-JAWS: THE GAME
-*/
 
-
-/*
-THE GAME BOARD
-*/
-//Notes: Refactor how we define tiles. This is going to be unwieldy.
-
-directions = []
+let shark_position = 2;
+let player_position = 1; 
+let available_moves = []
 // The base unit for the board size. Square this to make the board tiles. The key value for a lot of tile trait calculations.
-board_base = 5
+let board_base = 5;
+let board_size = board_base * board_base;
+// Important! At least until I fold in something more sophisticated. Since it's the only designated land space, the code will be referencing it frequently
+board_center = Math.ceil(board_size/2);
 
-//Water tiles can be moved along freely.
-const water_tiles = [1, 2, 3, 4, 5, 6, 10, 11, 15, 16, 20, 21, 25]
-// Boundaries account for limited movement from water tiles that border the board edges or land tiles.
-/*const north_boundary = [1, 6, 9, 11, 14, 16, 19, 21]
-const east_boundary = [7, 8, 9, 21, 22, 23, 24, 25]
-const south_boundary = [5, 7, 10, 12, 15, 17, 20, 25]
-const west_boundary =  [1, 2, 3, 4, 5, 17, 18, 19]*/
+//Assigning easy to call variables for the directions. Should stay constant for any board with an odd board_base.
+let directions = [];
+const north = -1;
+const east = board_base;
+const south = 1;
+const west = -board_base;
+const beach_tiles = [(board_center + north), (board_center + east), (board_center + south), (board_center + west)];
 
-//Used to evaluate a tile for 
-let tile = {
-    //So we can run through  
-    index: 0,
-    //Evaluates whether a tile can be moved on but also whether or not it triggers a special event.
-    tileType: [],
-    lastName: dongle,
-    id: 5566,
-    fullName: function() {
-      return this.firstName + " " + this.lastName;
+// dead swimmers are essentially a score counter. When it >= shark_goal, shark wins.
+let dead_swimmers = 0;
+const shark_goal = 20;
+
+//Spielberg directs the board, evaluating decisions made by the player or shark.
+
+const spielberg = {
+    //determines the shark's location on the board.
+    tagged: [],
+    sharkStart: function() {
+        //Since the center square will always be land, we exclude it. Will need to refactor if I want to mix in more complex maps.
+        sharkIndex = Math.ceil(Math.random() * (board_size - 1));
+        if (sharkIndex < board_center) {
+            shark_position = sharkIndex;
+            console.log("Under 13: " + shark_position)
+        }
+        else {
+            shark_position = sharkIndex + 1;
+            console.log("Over 13: " + shark_position)
+        }
+
+    },
+    // Takes a given tile and figures out its relationship to various objects. Takes the value of a tile, as numbered in index.html
+    canMove: function(tile) {
+        // holds the  values for NESW after evaluation. This hopefully keeps the moves options abstract without being unwieldy.
+        // Evaluates whether North is true.
+        if ((tile + north) % board_base === 0 || tile + north === board_center) {
+            console.log("You can't move North.");
+        }
+        else {
+            console.log("You can move North");
+            directions.push(north);
+        }
+        if (tile > (board_size - board_base)  || tile + east === board_center) {
+            console.log("You can't move East.")
+        }
+        else {
+            console.log("You can move East.");
+            directions.push(east);
+        }
+        if (tile % board_base === 0 || tile + south === board_center) {
+            console.log("You can't move South.");
+        }
+        else {
+            console.log("You can move South.");
+            directions.push(south);
+        }
+        if (tile <= board_base  || tile + west === board_center) {
+            console.log("You can't move West.")
+        }
+        else {
+            console.log("You can move West.")
+            directions.push(west)
+        }
+        return directions;
+    },
+    tileType: function(tile) {
+
     }
+    // Stores whether or not you can move NESW from this tile.
+    //Tracks the barrels
 };
 
-  console.log(tile.index);
-  console.log(tile.tileType);
 
-//An array that can loop through the different boundary arrays to determine possible directions for the shark or player to move.
-const boundaries = [north_boundary, east_boundary, south_boundary, west_boundary]
-
-//A general purpose function to figure out the logic and possibly call for both Jaws and the player.
-function move(direction) {
-    
-}
-
-function moveChoice()
-
-//The shark just swims and eats, so not a lot to put in place here..
+//The shark just swims and eats, so not a lot to put in place here.
 class Shark {
     //might want to add dmg value later, for how many swimmers ya boi can eat.
-    constructor(health, move_speed) {
+    constructor(health, move_speed, dmg) {
         //moves per turn (bites don't count as a move)
         this.move_speed = move_speed;
         //hits the shark takes before dying.
         this.health = health;
+        this.dmg = dmg
     }
-    //determines the starting position for the shark.
-    initiateShark() {
-        //shark_current = Math.ceil(Math.random() * 25);
-        console.log(water_tiles)    
-    }
-    moveShark() {
+    eat() {
+        for (panel of beach_tiles) {
+            if (shark_position === panel) {
+                //dead_swimmers += Math.ceil(Math.random() * this.dmg)
+                //console.log(`There are now ${dead_swimmers} swimmers eaten. The shark was last seen at ${shark_position}.`)
+            }
+            else (console.log("No swimmers dead. No shark sightings."))    
+        }
 
-    }  
-    sharkDeath() {
+    }
+    move() {
+        console.log(directions);
+        for (let i = 1; i <= this.move_speed; i++) {
+            console.log("Shark's position, turn beginning: " + shark_position);
+            spielberg.canMove(shark_position);
+            let move_index = Math.ceil(Math.random() * directions.length);
+            shark_position += directions[move_index];
+            console.log("Shark Position, turn end: " + shark_position);
+            this.eat();
+            directions = [];
+        } 
+    }
+
+    die() {
 
     }
 }
 
 //Storing a shark for the game "A.I."
-jaws = new Shark(1, 3);
-
-//Stores the cell the shark is currently in, for mapping the next turn and determining if he's hit.
-shark_current = 0;
-// Array for storing the moves of the shark within the turn. Evaluated for triggering events (also really helps with testing)
-shark_path = [];
-
-
-
-/*///
-////
-DRIVER
-   CODE
-////
-//*/
-console.log(shark_current)
-console.log(shark_path)
-
-jaws.initiateShark();
-console.log(shark_current);
-
+jaws = new Shark(1, 3, 2);
+spielberg.sharkStart();
+jaws.move();
