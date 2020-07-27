@@ -1,6 +1,9 @@
 let rules_text = "Welcome to Amity Island! A killer shark is on the loose, but that's not going to stop people from having fun. Sound familiar? It should! You're the infamous shark hunter Quint, and your goal is to drain the shark's health. You get four actions each turn which you can split up between moving and firing a barrel. Each barrel that hits Jaws will wear down his health, but the only information you have to track him is the path of bodies in his wake. Jaws will move three spaces any turn, and if he travels over a beach space, he'll eat a set amount of swimmers. Use this information to triangulate his location, and don't let him get to 20 kills!"
 let playerWinText = "Congrats! You won!"
 let playerLoseText = "Oh no! You lost!"
+function displayRules() {
+    window.alert(rules_text);
+}
 let player_moves = 4;
 let shots_fired = false;
 cells = document.querySelectorAll('.tile')
@@ -126,7 +129,7 @@ class Shark {
             return player_moves;
         } 
     }
-}
+};
 
 class Player {
     constructor(move_speed) {
@@ -205,6 +208,3 @@ function endGame() {
     }
 }
 
-function displayRules() {
-    window.alert(rules_text);
-}
