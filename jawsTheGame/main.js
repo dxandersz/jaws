@@ -173,9 +173,7 @@ class Player {
                     }   
                     else {
                         window.alert("You missed!")
-                        })
-
-                    };
+                        }
                     barrel_target === 0;
                     player_moves -= 1;
                     console.log(this.move_speed);
