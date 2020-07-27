@@ -104,7 +104,7 @@ class Shark {
                 dead_swimmers += Math.ceil(Math.random() * this.dmg)
                 document.getElementById("last_seen").innerText = shark_position;
                 cells[panel-1].append(jaws_pix);
-                window.alert(`There are now ${dead_swimmers} swimmers eaten. The shark was last seen at ${shark_position}.`)
+                window.alert(`Jaws moved. There are now ${dead_swimmers} swimmers eaten.`)
             }
         }
         endGame();
@@ -122,9 +122,8 @@ class Shark {
             let swimmers_eaten = document.getElementById('swimmers_eaten');
             swimmers_eaten.innerText = dead_swimmers;
             player_moves = 4;
+            window.alert(`Jaws has moveed! He's eaten ${swimmers_eaten} swimmer `)
             return player_moves;
-            if (swimmers_eaten >= 20) {
-                
             }
         } 
     }
