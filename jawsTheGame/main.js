@@ -1,8 +1,11 @@
-rules_text = "Welcome to Amity Island! "
-
+let rules_text = "Welcome to Amity Island! "
+let playerWinText = "Congrats! You won!"
+let playerLoseText = "Oh no! You lost!"
+let player_moves = 4;
+let shots_fired = false;
 cells = document.querySelectorAll('.tile')
 let shark_position = 2;
-let player_position = 1; 
+let player_position = 7; 
 let available_moves = [];
 let directions = [];
 // The base unit for the board size. Square this to make the board tiles. The key value for a lot of tile trait calculations.
@@ -10,7 +13,7 @@ let board_base = 5;
 let board_size = board_base * board_base;
 // Important! At least until I fold in something more sophisticated. Since it's the only designated land space, the code will be referencing it frequently
 board_center = Math.ceil(board_size/2);
-
+moves_left.innerText = player_moves;
 
 //Assigning easy to call variables for the directions. Should stay constant for any board with an odd board_base.
 const north = -1;
@@ -28,6 +31,7 @@ jaws_pix.classList.add("jaws_pix")
 const orca_pix = document.createElement("img");
 orca_pix.setAttribute("src", "./img/orca.png");
 orca_pix.classList.add("orca_pix");
+cells[6].append(orca_pix);
 
 //Spielberg directs the board, evaluating decisions made by the player or shark.
 
@@ -80,12 +84,7 @@ const spielberg = {
             console.log("You can move West.")
             directions.push(west)
         }
-    },
-    tileType: function(tile) {
-
     }
-    // Stores whether or not you can move NESW from this tile.
-    //Tracks the barrels
 };
 
 
@@ -108,6 +107,7 @@ class Shark {
                 window.alert(`There are now ${dead_swimmers} swimmers eaten. The shark was last seen at ${shark_position}.`)
             }
         }
+        endGame();
 
     }
     move() {
@@ -121,6 +121,11 @@ class Shark {
             directions = [];
             let swimmers_eaten = document.getElementById('swimmers_eaten');
             swimmers_eaten.innerText = dead_swimmers;
+            player_moves = 4;
+            return player_moves;
+            if (swimmers_eaten >= 20) {
+                
+            }
         } 
     }
 }
@@ -129,40 +134,75 @@ class Player {
     constructor(move_speed) {
         this.move_speed = move_speed;
         //Expand this later, so I can assign different variables to different characters.
-        this.position = player_position;
     }
     move(direction) {
         spielberg.canMove(player_position);
-        directions.forEach(e => {
-            if (e === direction) {
-                player_position += direction;
-                this.move_speed -=1;
-                cells[player_position-1].append(orca_pix);
+        if (player_moves > 0) {
+            directions.forEach(e => {
+                if (e === direction) {
+                    player_position += direction;
+                    player_moves -=1;
+                    cells[player_position-1].append(orca_pix);
             }
-        });
-        console.log(player_position);
-        console.log(this.move_speed);
-    }
-    fireBarrel(direction) {
-        
-    }
-    saveSwimmer() {
+            });
+        }
+        else {
+            window.alert("You're out of moves.")
+        }
+        moves_left.innerText = player_moves;
+        return player_moves;
+    };
+    fire(direction) {
+        spielberg.canMove(player_position);
+        if (player_moves > 0) {
+            directions.forEach(e => {
+                if (e === direction) {
+                    let barrel_target = player_position += direction;
+                    console.log(player_position);
+                    console.log("Target position: " + barrel_target);
+                    console.log("Shark position: " + shark_position)
+                    player_position = player_position -= direction;
+                    if (barrel_target === shark_position) {
+                        console.log("You hit Jaws!")
+                        jaws.health -= 1;
+                        console.log("Jaws health: " + jaws.health)
+                    }
+                    else {
+                        console.log("You missed!")
+                    };
+                    barrel_target === 0;
+                    player_moves -= 1;
+                    console.log(this.move_speed);
+                    endGame()
+                }
+            });
+        }
+        else {
+            window.alert("You're out of moves.")
+        }
+        let moves_left = document.getElementById('moves_left');
+        moves_left.innerText = player_moves;
+        return player_moves;
 
     }
+    
 }
 
 
-
 //Storing a shark to experiment with.
-jaws = new Shark(1, 5, 2);
+jaws = new Shark(3, 5, 2);
 quint = new Player(4);
-spielberg.sharkStart(); 
-jaws.move();
-quint.move(south);
-console.log(player_position)
-quint.move(west);
-console.log(player_position)
-quint.move(east);
-console.log(player_position)
-console.log(quint.move_speed)
 // let kill_counter = getElementByid, innerHTML(dead_swimmers)
+spielberg.sharkStart(); 
+document.querySelector("#jaws_health").innerText = jaws.health;
+function endGame() {
+    if (jaws.health <= 0) {
+        window.alert(playerWinText)
+    }
+    else if (dead_swimmers >= 20) {
+        window.alert(playerLoseText)
+    }
+    else {
+        return;
+    }
+}

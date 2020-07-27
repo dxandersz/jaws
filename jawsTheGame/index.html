@@ -51,17 +51,28 @@
             </div>
         </div>
         <div class='nav'>
+            <p>Moves Left:</p><span id='moves_left'></span>
+            <p>Jaws Health:</p><span id='jaws_health'></span>
             <p>Jaws Last Seen:</p><span id="last_seen"></span>
             <p>Swimmers Eaten:</p><span id="swimmers_eaten"></span>
             <div id='quint_move'>
+                <h3>Move:</h3>
                 <button type='button' onclick="quint.move(north)">North</button>
                 <button type='button' onclick="quint.move(east)">East</button>
                 <button type='button' onclick="quint.move(south)">South</button>
                 <button type='button' onclick="quint.move(west)">West</button>
             </div>
+            <div id='quint_fire'>
+                <h3>Fire a Barrel:</h3>
+                <button type='button' onclick="quint.fire(north)">North</button>
+                <button type='button' onclick="quint.fire(east)">East</button>
+                <button type='button' onclick="quint.fire(south)">South</button>
+                <button type='button' onclick="quint.fire(west)">West</button>
+            </div>
+            <button type='button' onclick='jaws.move()'>End Turn</button>
+            <button type='button' onclick='resetGame()'>Reset Game</button>
         </div>
         </div>  
-        <button type="button" onclick="jaws.move()">Move Jaws</button>
     </div>
     <script type="text/javascript" src="./main.js"></script>
 </body>
