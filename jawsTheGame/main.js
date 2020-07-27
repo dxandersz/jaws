@@ -122,7 +122,7 @@ class Shark {
             let swimmers_eaten = document.getElementById('swimmers_eaten');
             swimmers_eaten.innerText = dead_swimmers;
             player_moves = 4;
-            window.alert(`Jaws has moveed! He's eaten ${swimmers_eaten} swimmer `)
+            window.alert(`Jaws has moved! He's eaten ${swimmers_eaten} swimmers!`)
             return player_moves;
             }
         } 
