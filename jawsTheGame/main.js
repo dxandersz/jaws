@@ -1,6 +1,6 @@
 let rules_text = "Welcome to Amity Island! A killer shark is on the loose, but that's not going to stop people from having fun. Sound familiar? It should! You're the infamous shark hunter Quint, and your goal is to drain the shark's health. You get four actions each turn which you can split up between moving and firing a barrel. Each barrel that hits Jaws will wear down his health, but the only information you have to track him is the path of bodies in his wake. Jaws will move three spaces any turn, and if he travels over a beach space, he'll eat a set amount of swimmers. Use this information to triangulate his location, and don't let him get to 20 kills!"
-let playerWinText = "Congrats! You won!"
-let playerLoseText = "Oh no! You lost!"
+let playerWinText = "Jaws is now covered in barrels! Congratulations, he looks so dumb and now feels self-conscious about it!"
+let playerLoseText = "Oh no! You lost! But it's not your fault those idiots kept going to the beach with a shark around."
 function displayRules() {
     window.alert(rules_text);
 }
@@ -9,8 +9,7 @@ let shots_fired = false;
 cells = document.querySelectorAll('.tile')
 let shark_position = 2;
 let player_position = 7; 
-let available_moves = [];
-let directions = [];
+
 // The base unit for the board size. Square this to make the board tiles. The key value for a lot of tile trait calculations.
 let board_base = 5;
 let board_size = board_base * board_base;
@@ -24,6 +23,8 @@ const east = board_base;
 const south = 1;
 const west = -board_base;
 const beach_tiles = [(board_center + north), (board_center + east), (board_center + south), (board_center + west)];
+let barrel_tiles = new Set([]);
+
 
 // dead swimmers are essentially a score counter. When it >= shark_goal, shark wins.
 let dead_swimmers = 0;
@@ -35,6 +36,8 @@ const orca_pix = document.createElement("img");
 orca_pix.setAttribute("src", "./img/orca.png");
 orca_pix.classList.add("orca_pix");
 cells[6].append(orca_pix);
+
+
 
 //Spielberg directs the board, evaluating decisions made by the player or shark.
 
@@ -164,18 +167,20 @@ class Player {
                     console.log("Shark position: " + shark_position)
                     player_position = player_position -= direction;
                     if (barrel_target === shark_position) {
-                        console.log("You hit Jaws!")
+                        window.alert("You hit Jaws!")
                         jaws.health -= 1;
                         console.log("Jaws health: " + jaws.health)
-                    }
+                    }   
                     else {
-                        console.log("You missed!")
+                        window.alert("You missed!")
+                        })
+
                     };
                     barrel_target === 0;
                     player_moves -= 1;
                     console.log(this.move_speed);
                     endGame()
-                }
+                }   
             });
         }
         else {
