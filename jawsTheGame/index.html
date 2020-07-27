@@ -51,11 +51,18 @@
             </div>
         </div>
         <div class='nav'>
-            <p>Shark Position:</p>
-            <p>Shark Path:</p>
-            <p>Swimmers Eaten:</p>
+            <p>Jaws Last Seen:</p><span id="last_seen"></span>
+            <p>Swimmers Eaten:</p><span id="swimmers_eaten"></span>
+            <div id='quint_move'>
+                <button type='button' onclick="quint.move(north)">North</button>
+                <button type='button' onclick="quint.move(east)">East</button>
+                <button type='button' onclick="quint.move(south)">South</button>
+                <button type='button' onclick="quint.move(west)">West</button>
+            </div>
         </div>
         </div>  
+        <button type="button" onclick="jaws.move()">Move Jaws</button>
     </div>
+    <script type="text/javascript" src="./main.js"></script>
 </body>
 </html>
